@@ -7,7 +7,7 @@ It enables developers, data engineers, and QA analysts to compare, validate, and
 ---
 
 
-![Front Page](image.png)
+![Home Page](images/Home.png)
 
 ## 🎯 Key Features
 
@@ -26,20 +26,22 @@ It enables developers, data engineers, and QA analysts to compare, validate, and
 - ✏️ **Custom SQL Matching**: Compare arbitrary SQL queries side-by-side.
 
 
-![Validation Engine Metrics](image-1.png)
+![Validation Engine Metrics](images/Validation_Engine_Metrics.png)
 
 ### 3. Multi-source Adapters
 - **Relational Databases**: PostgreSQL, MySQL, SQLite, and Amazon Redshift.
 - **Cloud Warehouses**: Snowflake (supporting standard authentication, MFA, and browser SSO).
 - **Tabular Files**: Direct CSV, TSV, XLS, and XLSX file comparisons.
 
-![Multi-source Adapters](image-2.png)
+![Multi-source Adapters](images/Multi_source_Adapters.png)
 
 ### 4. Comprehensive Reporting
 - Automatically packages validation runs into a downloadable **ZIP bundle**.
 - **Excel Report**: Multi-sheet summary, detailed records, highlighted failures, and aggregate run statistics.
 - **Table-wise CSV Folders**: Organized folders for each table containing validation logs and differences.
 
+![Comprehensive Reporting](images/Comprehensive_Reporting.png)
+![Table-wise CSV Folder](images/Table_wise_CSV_Folder.png)
 ---
 
 ## 🏗️ Project Architecture
@@ -125,6 +127,8 @@ python data_migration_validator.py -t tenant1
 - **Normalization Preferences**: Configure custom float rounding, case-sensitive matching, and text trim options via the **Settings** tab.
 - **Validation History**: Runs are saved locally to `config/validation_history.json`, allowing you to reload previous validation runs and view performance charts over time.
 
+![Configuration & Settings](Configuration_&_Settings.png)
+
 ---
 
 ## 🔑 Syncing Table Primary Keys (100+ Tables)
@@ -157,5 +161,4 @@ The CLI parses mapping files matching `tables/{group}_aggregation.json` or `tabl
 # Loads mapping from tables/claims_aggregation.json
 python data_migration_validator.py -t tenant1 -g claims
 ```
-
 ---
