@@ -127,7 +127,7 @@ python data_migration_validator.py -t tenant1
 - **Normalization Preferences**: Configure custom float rounding, case-sensitive matching, and text trim options via the **Settings** tab.
 - **Validation History**: Runs are saved locally to `config/validation_history.json`, allowing you to reload previous validation runs and view performance charts over time.
 
-![Configuration & Settings](Configuration_&_Settings.png)
+![Configuration & Settings](images/Configuration_&_Settings.png)
 
 ---
 
