@@ -6,6 +6,9 @@ It enables developers, data engineers, and QA analysts to compare, validate, and
 
 ---
 
+
+![Front Page](image.png)
+
 ## 🎯 Key Features
 
 ### 1. UI & Visualization (Streamlit App)
@@ -22,10 +25,15 @@ It enables developers, data engineers, and QA analysts to compare, validate, and
 - 📊 **Statistical Profiling**: Automatic aggregate profile audits (min, max, mean, distinct count) for numeric and string fields.
 - ✏️ **Custom SQL Matching**: Compare arbitrary SQL queries side-by-side.
 
+
+![Validation Engine Metrics](image-1.png)
+
 ### 3. Multi-source Adapters
 - **Relational Databases**: PostgreSQL, MySQL, SQLite, and Amazon Redshift.
 - **Cloud Warehouses**: Snowflake (supporting standard authentication, MFA, and browser SSO).
 - **Tabular Files**: Direct CSV, TSV, XLS, and XLSX file comparisons.
+
+![Multi-source Adapters](image-2.png)
 
 ### 4. Comprehensive Reporting
 - Automatically packages validation runs into a downloadable **ZIP bundle**.
@@ -105,8 +113,8 @@ Verify the CLI works or execute validations directly from your terminal:
 # Display help and arguments
 python data_migration_validator.py --help
 
-# Run standard table group validation for tenant "chcsno"
-python data_migration_validator.py -t chcsno
+# Run standard table group validation for tenant "tenant1"
+python data_migration_validator.py -t tenant1
 ```
 
 ---
@@ -147,7 +155,7 @@ Example (`tables/standard_aggregation.json`):
 The CLI parses mapping files matching `tables/{group}_aggregation.json` or `tables/{group}.json` automatically. Pass the group name using the `-g` / `--group` argument:
 ```bash
 # Loads mapping from tables/claims_aggregation.json
-python data_migration_validator.py -t chcsno -g claims
+python data_migration_validator.py -t tenant1 -g claims
 ```
 
 ---

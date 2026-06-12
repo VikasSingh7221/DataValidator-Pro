@@ -1,0 +1,31 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.venv/
+venv/
+ENV/
+env/
+
+# Streamlit
+.streamlit/config.toml
+
+# App specific data/credentials
+config/credentials.json
+config/settings.json
+config/validation_history.json
+
+# Generated reports & files
+*.xlsx
+*.zip
+*.csv
+*.db
+validation_report_*.xlsx
+validation_report_*.zip
+summary.csv
+statistics.csv
+
+# macOS DS_Store
+.DS_Store
