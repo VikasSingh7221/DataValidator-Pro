@@ -1,2 +1,116 @@
-# DataValidator-Pro
+# DataValidator Pro — Enterprise Data Quality & Migration Validator
+
+DataValidator Pro is a generalized, high-performance **Data Validation & Quality Assurance Tool** featuring a premium, **Streamlit UI** and a backward-compatible **CLI**. 
+
 It enables developers, data engineers, and QA analysts to compare, validate, and audit datasets across heterogeneous sources — including **PostgreSQL, MySQL, Snowflake, Redshift, SQLite, and uploaded CSV/Excel files** — using cell-level row hashing, statistical profiles, schema diffs, and customizable SQL tests.
+
+---
+
+## 🎯 Key Features
+
+### 1. UI & Visualization (Streamlit App)
+- **Interactive Dashboard**: Rich, glassmorphic dark-theme UI featuring real-time, table-by-table validation progress bars and live log streaming.
+- **Visual Analytics**: Interactive Plotly charts showing table status distributions, historical quality/pass-rate trends, and database statistics.
+- **Drill-down Inspector**: Investigate specific mismatches, null frequencies, and schema variations in detail.
+
+### 2. Validation Engine Metrics (7 Core Types)
+- 🔐 **Row Hash Validation**: MD5 hash-based per-row cellular matching across common columns with configurable sampling sizes.
+- #️⃣ **Row Count Comparison**: High-speed row count audits with user-defined threshold tolerances.
+- 🏗️ **Schema Difference**: Column-by-column matches of data types, naming, column presence, and nullability flags.
+- 🕳️ **Null Analysis**: Metric comparison for null value percentages per column across sources.
+- 👯 **Duplicate Detection**: Auto-detect duplicated key records in source and target databases.
+- 📊 **Statistical Profiling**: Automatic aggregate profile audits (min, max, mean, distinct count) for numeric and string fields.
+- ✏️ **Custom SQL Matching**: Compare arbitrary SQL queries side-by-side.
+
+### 3. Multi-source Adapters
+- **Relational Databases**: PostgreSQL, MySQL, SQLite, and Amazon Redshift.
+- **Cloud Warehouses**: Snowflake (supporting standard authentication, MFA, and browser SSO).
+- **Tabular Files**: Direct CSV, TSV, XLS, and XLSX file comparisons.
+
+### 4. Comprehensive Reporting
+- Automatically packages validation runs into a downloadable **ZIP bundle**.
+- **Excel Report**: Multi-sheet summary, detailed records, highlighted failures, and aggregate run statistics.
+- **Table-wise CSV Folders**: Organized folders for each table containing validation logs and differences.
+
+---
+
+## 🏗️ Project Architecture
+
+```
+Data Validation Tool/
+├── app.py                          # Streamlit UI Entry Point
+├── data_migration_validator.py     # Legacy CLI Entry Point
+├── requirements.txt                # Dependencies
+├── core/
+│   ├── connections.py              # Database/File Adapter Interfaces
+│   ├── validators.py               # Validation Strategies Engine
+│   ├── normalizers.py              # Data Cleansing & Hash Normalizer
+│   ├── reports.py                  # Excel/CSV/ZIP Reports Generator
+│   └── models.py                   # Shared Dataclasses & Enums
+├── ui/
+│   ├── styles.py                   # CSS Custom Themes
+│   ├── components.py               # Styled UI Widgets
+│   ├── page_home.py                # Landing Dashboard
+│   ├── page_connections.py         # Connection Builder Page
+│   ├── page_validate.py            # Validation Runner Page
+│   ├── page_results.py             # Results Analytics Page
+│   ├── page_history.py             # Run Log & Trend Page
+│   └── page_settings.py            # Tolerance & Normalization Settings
+└── config/
+    └── credentials.json            # Saved DB profiles (Git-ignored)
+```
+
+---
+
+## 🚀 Getting Started
+
+### 1. Requirements
+- Python 3.10+
+- Virtual environment setup
+
+### 2. Installation & Setup
+Create a virtual environment and install the required dependencies:
+
+```bash
+# Clone the repository
+cd "Data Validation Tool"
+
+# Set up virtual environment
+python3 -m venv .venv
+source .venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+### 3. Running the Streamlit App
+Start the interactive UI dashboard:
+```bash
+streamlit run app.py
+```
+
+### 4. Running the CLI (Backward-compatible)
+Verify the CLI works or execute validations directly from your terminal:
+```bash
+# Display help and arguments
+python data_migration_validator.py --help
+
+# Run standard table group validation for tenant "chcsno"
+python data_migration_validator.py -t chcsno
+```
+
+---
+
+## ⚙️ Configuration & Settings
+
+- **Database Settings**: Set up database connections directly in the **Data Connections** page of the UI or configure `config/credentials.json`.
+- **Normalization Preferences**: Configure custom float rounding, case-sensitive matching, and text trim options via the **Settings** tab.
+- **Validation History**: Runs are saved locally to `config/validation_history.json`, allowing you to reload previous validation runs and view performance charts over time.
+
+---
+
+## 📦 Deployment
+
+1. **Streamlit Sharing / Cloud**: Deploy directly from GitHub for free. Place connections info in Streamlit Secrets.
+2. **Docker / Cloud VMs**: Package as a container for deployment in private VPCs (useful for establishing secure database tunnels).
+3. **GitHub Pages**: Download the ZIP report bundles or Excel worksheets generated by the validation engine to host and share static validation logs.
