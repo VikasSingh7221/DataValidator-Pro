@@ -89,6 +89,16 @@ Start the interactive UI dashboard:
 streamlit run app.py
 ```
 
+### 3a. Quick Sandbox Testing (No Database Server Required)
+If you don't have active database credentials and want to test the entire validation flow:
+1. Go to the **Data Connections** page in the sidebar.
+2. Scroll to the bottom and click the **⚡ Generate & Load Demo SQLite Databases** button.
+3. This creates two local SQLite databases (`demo_source.db` & `demo_target.db`) with test data and saves a primary key mapping configuration file (`tables/demo_aggregation.json`).
+4. Navigate to the **Run Validation** page.
+5. In **Table Selection**, select **Filter by configured table group**, select the **demo** group from the dropdown, and click **🚀 Start Validation**.
+6. Switch to the **Results Dashboard** page to view metric summaries, interactive charts, table drill-downs, cell mismatch logs, and download Excel/ZIP report bundles!
+
+
 ### 4. Running the CLI (Backward-compatible)
 Verify the CLI works or execute validations directly from your terminal:
 ```bash
@@ -106,6 +116,39 @@ python data_migration_validator.py -t chcsno
 - **Database Settings**: Set up database connections directly in the **Data Connections** page of the UI or configure `config/credentials.json`.
 - **Normalization Preferences**: Configure custom float rounding, case-sensitive matching, and text trim options via the **Settings** tab.
 - **Validation History**: Runs are saved locally to `config/validation_history.json`, allowing you to reload previous validation runs and view performance charts over time.
+
+---
+
+## 🔑 Syncing Table Primary Keys (100+ Tables)
+
+To perform per-row hashing (`ROW_HASH`), the validation engine requires the primary key(s) of each table to sort and align rows correctly. When validating **hundreds of tables**, you can avoid entering them manually by syncing them from a local JSON configuration file.
+
+### 1. Configuration File Format
+Create a JSON file inside the `tables/` directory. The structure is a simple key-value map where the key is the **table name** (lowercase) and the value is the **comma-separated primary key column(s)**.
+
+Example (`tables/standard_aggregation.json`):
+```json
+{
+  "users": "user_id",
+  "orders": "order_id, customer_id",
+  "claims": "claim_id",
+  "transactions": "txn_id"
+}
+```
+
+### 2. How to Sync in Streamlit UI (Runtime)
+1. Navigate to the **Run Validation** page.
+2. In the **Table Selection** section, expand **Primary Key Mapping (optional)**.
+3. Select your config file from the dropdown under **📂 Sync primary keys from a local configuration file:**.
+4. The app will parse the JSON and immediately load all primary key configurations.
+5. If needed, you can write overrides or append new ones in the **Manual PK Overrides / Additions** text area below the dropdown.
+
+### 3. How to Sync in the CLI
+The CLI parses mapping files matching `tables/{group}_aggregation.json` or `tables/{group}.json` automatically. Pass the group name using the `-g` / `--group` argument:
+```bash
+# Loads mapping from tables/claims_aggregation.json
+python data_migration_validator.py -t chcsno -g claims
+```
 
 ---
 
