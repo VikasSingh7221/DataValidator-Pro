@@ -1,6 +1,18 @@
 # DataValidator Pro — Enterprise Data Quality & Migration Validator
 
+
+[![Docker Hub](https://img.shields.io/badge/Docker-Hub-blue?logo=docker)](https://hub.docker.com/r/vicky15150109/datavalidator-pro)
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
+![Streamlit](https://img.shields.io/badge/Streamlit-UI-red)
+
 DataValidator Pro is a generalized, high-performance **Data Validation & Quality Assurance Tool** featuring a premium, **Streamlit UI** and a backward-compatible **CLI**. 
+
+🚀 **DataValidator Pro is available as a Docker image and can be launched with a single command:**
+
+```bash
+docker run -d -p 8501:8501 vicky15150109/datavalidator-pro
+```
+
 
 It enables developers, data engineers, and QA analysts to compare, validate, and audit datasets across heterogeneous sources — including **PostgreSQL, MySQL, Snowflake, Redshift, SQLite, and uploaded CSV/Excel files** — using cell-level row hashing, statistical profiles, schema diffs, and customizable SQL tests.
 
@@ -43,6 +55,17 @@ It enables developers, data engineers, and QA analysts to compare, validate, and
 ![Comprehensive Reporting](images/Comprehensive_Reporting.png)
 ![Table-wise CSV Folder](images/Table_wise_CSV_Folder.png)
 ---
+
+
+## 💼 Enterprise Use Cases
+
+- Data Migration Validation
+- ETL / ELT Pipeline Testing
+- Data Warehouse Reconciliation
+- Database Modernization Projects
+- Production Data Quality Monitoring
+- Regression Testing for Data Products
+- UAT & QA Verification
 
 ## 🏗️ Project Architecture
 
@@ -162,3 +185,28 @@ The CLI parses mapping files matching `tables/{group}_aggregation.json` or `tabl
 python data_migration_validator.py -t tenant1 -g claims
 ```
 ---
+
+## 🛠️ Technology Stack
+
+- Python
+- Streamlit
+- Pandas
+- SQLAlchemy
+- PostgreSQL
+- MySQL
+- Snowflake
+- Amazon Redshift
+- SQLite
+- Plotly
+- OpenPyXL
+- Docker
+
+---
+
+## 👨‍💻 Author
+
+**Vikas Singh**
+
+GitHub: https://github.com/VikasSingh7221
+
+If you found this project useful, consider giving it a ⭐ on GitHub.
