@@ -1,7 +1,0 @@
-empty_tables = {
-  "edh_claims_aetna_mbr_individual_id_translation_map": null,
-  "perform_ccd_aggr_drilldown_staging": null,
-  "perform_ccd_aggr_landing_staging": null,
-  "perform_cv_aggr_all_staging": null,
-  "perform_ccd_selected_variations_staging": null
-}
